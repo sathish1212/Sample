@@ -45,17 +45,27 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 	}
 	
 	@Test(priority = 1)
-	public void YearCreationn() 
-	{
-	g.findElement(By.id("194")).click();
+	public void Religion()
+{
+	WebElement element = g.findElement (By.linkText("Masters"));
+	Actions action =new Actions(g);
+	action.moveToElement(element).perform();
 	
+	WebElement Submenu = (new WebDriverWait(g, 10).until(ExpectedConditions.presenceOfElementLocated(By.linkText("Generic"))));
+	action.moveToElement(Submenu);
+	action.click();
+	action.perform();
+	System.out.println("Reached Generic");
 	
-	WebElement element = g.findElement (By.linkText("Year Setting"));
-	element.click();
-	element.click();
-	g.findElement(By.xpath("//*[@id='ctl00_BodyContentPH_btn_Createyear']")).click();
-	
-	
-	} 
+	g.findElement(By.xpath(".//*[@id='ctl00_BodyContentPH_lbl_Religion']")).click();
+	g.findElement(By.xpath(".//*[@id='ctl00_BodyContentPH_btn_add']")).click();
+	g.findElement(By.xpath(".//*[@id='ctl00_BodyContentPH_txt_ReligionName']")).sendKeys("Christian");
+	g.findElement(By.xpath(".//*[@id='ctl00_BodyContentPH_txt_ReligionDescription']")).sendKeys("Christian");
+	g.findElement(By.xpath(".//*[@id='ctl00_BodyContentPH_btn_save']")).click();
+	g.switchTo().alert().accept();
+	g.switchTo().alert().accept();
+
+} 
+    
 	
 }
