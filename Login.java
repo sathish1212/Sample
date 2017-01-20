@@ -66,6 +66,25 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 	g.switchTo().alert().accept();
 
 } 
+	
+	@Test(priority = 2)
+	public void ApprovalSettings()
+	{
+	WebElement element = g.findElement (By.linkText("Organization Settings"));
+	Actions action =new Actions(g);
+	action.moveToElement(element).perform();
+	
+	WebElement Submenu = (new WebDriverWait(g, 10).until(ExpectedConditions.presenceOfElementLocated(By.linkText("Approval Settings"))));
+	action.moveToElement(Submenu).perform();
+	action.click();
+	action.perform();
+	
+	new Select(g.findElement(By.id("ctl00_ContentPlaceHolder1_ddlCompany"))).selectByVisibleText("SG Industries");
+	g.findElement(By.id("ctl00_ContentPlaceHolder1_btn_Add")).click();
+	g.switchTo().alert().accept();
+	g.switchTo().alert().accept();
+	
+	} 
     
 	
 }
